@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "BunnyList.h"
+#include "rand.h"
+#include <queue>
 
 BunnyList::BunnyList()
 {
@@ -43,19 +45,51 @@ void BunnyList::KillOldBunnies()
 }
 
 void BunnyList::ConvertToRadioactive()
-{
+{	
+	std::vector <std::shared_ptr<Bunny>> nonrad_bunnies;
+
 	for (auto pBunny : *this)
 	{
-		if (pBunny->radioactive_mutant_vampire_bunny)
+		if (!pBunny->radioactive_mutant_vampire_bunny)
 		{
-			//Choose random non-radioactive bunny to convert
+			nonrad_bunnies.push_back(pBunny);
 		}
+	}
+
+	int rand_nonrad = 0;
+	for (auto pBunny : nonrad_bunnies)
+	{
+		rand_nonrad = rand_int(0, nonrad_bunnies.size() - 1);
+		nonrad_bunnies[rand_int(0, rand_nonrad)]->radioactive_mutant_vampire_bunny = true;
+		nonrad_bunnies.erase(nonrad_bunnies.begin() + rand_nonrad);
 	}
 }
 
 void BunnyList::KillHalf()
-{
-	//Randomly choose bunny_list.size() / 2 bunnies to kill
+{	
+	std::vector<int> rand_bunnies;
+	rand_bunnies.reserve(size() / 2);
+	for (int i = 0; i < size() / 2; i++)
+	{
+		rand_bunnies.push_back(rand_int(0, size() - 1));
+	}
+	std::sort(rand_bunnies.begin(), rand_bunnies.end());
+
+	int current_index = 0;
+	int rand_bunny_index = 0;
+	for (auto iter = begin(); iter != end(); ++iter)
+	{
+		if (rand_bunnies[rand_bunny_index] == current_index)
+		{
+			rand_bunnies.erase(rand_bunnies.begin() + rand_bunny_index);
+			erase(iter);
+			rand_bunny_index++;
+		}
+		else
+		{
+			current_index++;
+		}
+	}
 }
 
 void BunnyList::push_back(std::shared_ptr<Bunny> pBunny)
