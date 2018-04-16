@@ -1,5 +1,11 @@
 #pragma once
+#include <array>
 #include <vector>
 enum Sex { MALE, FEMALE };
 enum Color { WHITE, BROWN, BLACK, SPOTTED };
-std::vector<std::string> color = { "white", "brown", "black", "spotted" };
+
+inline std::string ColorToString(Color color)
+{
+	std::string colorNames[] = { "white", "brown", "black", "spotted" };
+	return colorNames[color];
+}
