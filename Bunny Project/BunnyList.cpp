@@ -2,6 +2,7 @@
 #include "BunnyList.h"
 #include "rand.h"
 #include <queue>
+#include <iostream>
 
 BunnyList::BunnyList()
 {
@@ -88,6 +89,21 @@ void BunnyList::KillHalf()
 		else
 		{
 			current_index++;
+		}
+	}
+}
+
+void BunnyList::OutputBunnies()
+{
+	for (auto pBunny : *this)
+	{
+		if (pBunny->radioactive_mutant_vampire_bunny)
+		{
+			std::cout << "Radioactive Mutant Vampire" << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << pBunny->color << std::endl;
+		}
+		else
+		{
+			std::cout << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << pBunny->color << std::endl;
 		}
 	}
 }

@@ -1,7 +1,8 @@
 ﻿#include "stdafx.h"
 #include "Bunny.h"
 #include "rand.h"
-#include <ctime>
+#include <fstream>
+#include <iostream>
 
 constexpr int MAX_NONRADIOACTIVE_AGE = 10;
 constexpr int MAX_RADIOACTIVE_AGE = 50;
@@ -11,8 +12,14 @@ Bunny::Bunny()
 	age = 0;
 	sex = rand_int(0, 1) ? MALE : FEMALE;
 	radioactive_mutant_vampire_bunny = rand_int(1,100) <= 2;
-
+	if (radioactive_mutant_vampire_bunny)
+	{
+		name = "Radioactive Mutant Vampire Bunny " + name;
+	}
+	
+	std::cout << name << "was born!";
 	color = static_cast<Color>(rand_int(static_cast<int>(WHITE), static_cast<int>(SPOTTED)));
+	
 }
 
 Bunny::Bunny(const Bunny &mother)
@@ -20,6 +27,12 @@ Bunny::Bunny(const Bunny &mother)
 	age = 0;
 	sex = rand_int(0, 1) ? MALE : FEMALE;
 	radioactive_mutant_vampire_bunny = rand_int(1, 100) <= 2;
+	if (radioactive_mutant_vampire_bunny)
+	{
+		name = "Radioactive Mutant Vampire Bunny " + name;
+	}
+
+	std::cout << name << "was born!";
 	color = mother.color;
 }
 

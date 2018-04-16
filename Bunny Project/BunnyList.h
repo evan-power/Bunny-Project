@@ -14,6 +14,7 @@ public:
 	void KillOldBunnies();
 	void ConvertToRadioactive();
 	void KillHalf();
+	void OutputBunnies();
 	void push_back(std::shared_ptr<Bunny>);
 
 	
