@@ -60,8 +60,8 @@ void BunnyList::ConvertToRadioactive()
 	int rand_nonrad = 0;
 	for (auto pBunny : nonrad_bunnies)
 	{
-		rand_nonrad = rand_int(0, nonrad_bunnies.size() - 1);
-		nonrad_bunnies[rand_int(0, rand_nonrad)]->radioactive_mutant_vampire_bunny = true;
+		rand_nonrad = rand_int(0, (int)nonrad_bunnies.size() - 1);
+		nonrad_bunnies[rand_int(0, (int)rand_nonrad)]->radioactive_mutant_vampire_bunny = true;
 		nonrad_bunnies.erase(nonrad_bunnies.begin() + rand_nonrad);
 	}
 }
@@ -72,7 +72,7 @@ void BunnyList::KillHalf()
 	rand_bunnies.reserve(size() / 2);
 	for (int i = 0; i < size() / 2; i++)
 	{
-		rand_bunnies.push_back(rand_int(0, size() - 1));
+		rand_bunnies.push_back(rand_int(0, (int)size() - 1));
 	}
 	std::sort(rand_bunnies.begin(), rand_bunnies.end());
 
@@ -99,11 +99,11 @@ void BunnyList::OutputBunnies()
 	{
 		if (pBunny->radioactive_mutant_vampire_bunny)
 		{
-			std::cout << "Radioactive Mutant Vampire" << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << color[pBunny->color] << std::endl;
+			std::cout << "Radioactive Mutant Vampire" << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << ColorToString(pBunny->color) << std::endl;
 		}
 		else
 		{
-			std::cout << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << color[pBunny->color] << std::endl;
+			std::cout << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << ColorToString(pBunny->color) << std::endl;
 		}
 	}
 }
