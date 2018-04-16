@@ -99,11 +99,11 @@ void BunnyList::OutputBunnies()
 	{
 		if (pBunny->radioactive_mutant_vampire_bunny)
 		{
-			std::cout << "Radioactive Mutant Vampire" << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << pBunny->color << std::endl;
+			std::cout << "Radioactive Mutant Vampire" << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << color[pBunny->color] << std::endl;
 		}
 		else
 		{
-			std::cout << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << pBunny->color << std::endl;
+			std::cout << pBunny->name << "\tAge:" << pBunny->age << "\tSex:" << ((pBunny->sex == MALE) ? "Male" : "Female") << "\tColor" << color[pBunny->color] << std::endl;
 		}
 	}
 }
