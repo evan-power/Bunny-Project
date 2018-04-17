@@ -41,10 +41,10 @@
     <ClCompile Include="Bunny Project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Bunny.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="BunnyList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bunny.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
