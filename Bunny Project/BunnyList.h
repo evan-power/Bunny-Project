@@ -14,7 +14,8 @@ public:
 	void KillOldBunnies();
 	void ConvertToRadioactive();
 	void KillHalf();
-	void OutputBunnies();
+	void AgeBunnies();
+	void OutputBunnies(std::ostream &out_stream);
 	void push_back(std::shared_ptr<Bunny>);
 
 	
